@@ -745,7 +745,7 @@ static qboolean ParseStage( shaderStage_t *stage, const char **text )
 				totalImages++;
 			}
 
-			if ( totalImages > maxAnimations ) {
+			if ( totalImages > MAX_IMAGE_ANIMATIONS ) {
 				ri.Printf( PRINT_WARNING, "WARNING: ignoring excess images for 'animMap' (found %d, max is %d) in shader '%s'\n",
 					totalImages, maxAnimations, shader.name );
 			}

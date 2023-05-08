@@ -435,6 +435,9 @@ extern	cvar_t	*cl_stencilbits;
 extern	cvar_t	*cl_depthbits;
 extern	cvar_t	*cl_drawBuffer;
 
+//Omega
+extern	cvar_t	*cl_consoleHeight;
+
 //=================================================
 
 //
@@ -515,6 +518,7 @@ void Con_PageDown( int lines );
 void Con_Top( void );
 void Con_Bottom( void );
 void Con_Close( void );
+void Con_SetFrac( const float conFrac );
 
 void CL_LoadConsoleHistory( void );
 void CL_SaveConsoleHistory( void );
