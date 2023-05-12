@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <errno.h>
 #include <direct.h>
 #include <io.h>
-#include <errno.h>
 
 #define MEM_THRESHOLD (96*1024*1024)
 
