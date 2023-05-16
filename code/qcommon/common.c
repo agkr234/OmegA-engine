@@ -63,6 +63,7 @@ fileHandle_t com_journalDataFile = FS_INVALID_HANDLE; // config files are writte
 cvar_t	*com_viewlog;
 cvar_t	*com_speeds;
 cvar_t	*com_developer;
+cvar_t	*com_warnings;
 cvar_t	*com_dedicated;
 cvar_t	*com_timescale;
 static cvar_t *com_fixedtime;
@@ -270,6 +271,29 @@ void QDECL Com_DPrintf( const char *fmt, ...) {
 	va_end( argptr );
 
 	Com_Printf( S_COLOR_CYAN "%s", msg );
+}
+
+
+/*
+================
+Com_WPrintf
+
+A Com_Printf that only shows up if the "warnings" cvar is set
+================
+*/
+void QDECL Com_WPrintf( const char *fmt, ...) {
+	va_list		argptr;
+	char		msg[MAXPRINTMSG];
+
+	if ( !com_warnings || !com_warnings->integer ) {
+		return;
+	}
+
+	va_start( argptr,fmt );
+	Q_vsnprintf( msg, sizeof( msg ), fmt, argptr );
+	va_end( argptr );
+
+	Com_Printf( S_COLOR_YELLOW "%s", msg );
 }
 
 
@@ -3607,6 +3631,9 @@ void Com_Init( char *commandLine ) {
 	Com_StartupVariable( "developer" );
 	com_developer = Cvar_Get( "developer", "0", CVAR_TEMP );
 	Cvar_CheckRange( com_developer, NULL, NULL, CV_INTEGER );
+
+	com_warnings = Cvar_Get( "warnings", "0", CVAR_TEMP );
+	Cvar_CheckRange( com_warnings, NULL, NULL, CV_INTEGER );
 
 	Com_StartupVariable( "vm_rtChecks" );
 	vm_rtChecks = Cvar_Get( "vm_rtChecks", "15", CVAR_INIT | CVAR_PROTECTED );
