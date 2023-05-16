@@ -2,22 +2,12 @@
 
 cd `dirname $0`
 if [ ! -f Makefile ]; then
-	echo "This script must be run from the ioquake3 build directory"
+	echo "This script must be run from the omega build directory"
 	exit 1
 fi
 
 # This script is to build a Universal 2 binary
 # (Apple's term for an x86_64 and arm64 binary)
-
-unset X86_64_SDK
-unset X86_64_CFLAGS
-unset X86_64_MACOSX_VERSION_MIN
-unset ARM64_SDK
-unset ARM64_CFLAGS
-unset ARM64_MACOSX_VERSION_MIN
-
-X86_64_MACOSX_VERSION_MIN="10.9"
-ARM64_MACOSX_VERSION_MIN="11.0"
 
 echo "Building X86_64 Client/Dedicated Server"
 echo "Building ARM64 Client/Dedicated Server"
@@ -40,6 +30,7 @@ fi
 #if [ -d build/release-release-x86_64 ]; then
 #	rm -r build/release-darwin-x86_64
 #fi
+(PLATFORM=darwin ARCH=x86_64 make -j$NCPU) || exit 1;
 
 echo;echo
 
@@ -47,14 +38,11 @@ echo;echo
 #if [ -d build/release-release-arm64 ]; then
 #	rm -r build/release-darwin-arm64
 #fi
+(PLATFORM=darwin ARCH=arm64 make -j$NCPU) || exit 1;
 
 echo
 
 # use the following shell script to build a universal 2 application bundle
-export MACOSX_DEPLOYMENT_TARGET="10.9"
-export MACOSX_DEPLOYMENT_TARGET_X86_64="$X86_64_MACOSX_VERSION_MIN"
-export MACOSX_DEPLOYMENT_TARGET_ARM64="$ARM64_MACOSX_VERSION_MIN"
-
 if [ -d build/release-darwin-universal2 ]; then
 	rm -r build/release-darwin-universal2
 fi
@@ -84,19 +72,19 @@ if [ "$1" == "notarize" ]; then
 	RELEASE_LOCATION="build/release-darwin-universal2"
 
 	# release build name
-	RELEASE_BUILD="ioquake3.app"
+	RELEASE_BUILD="OmegA.app"
 
 	# Pre-notarized zip file (not what is shipped)
-	PRE_NOTARIZED_ZIP="ioquake3_prenotarized.zip"
+	PRE_NOTARIZED_ZIP="omega_prenotarized.zip"
 
 	# Post-notarized zip file (shipped)
-	POST_NOTARIZED_ZIP="ioquake3_notarized.zip"
+	POST_NOTARIZED_ZIP="omega_notarized.zip"
 
-	BUNDLE_ID="org.ioquake3.ioquake3"
+	BUNDLE_ID="org.omega.omega"
 
 	# allows for unsigned executable memory in hardened runtime
 	# see: https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-unsigned-executable-memory
-	ENTITLEMENTS_FILE="misc/xcode/ioquake3/ioquake3.entitlements"
+	ENTITLEMENTS_FILE="misc/xcode/omega/omega.entitlements"
 
 	# sign the resulting app bundle
 	echo "signing..."

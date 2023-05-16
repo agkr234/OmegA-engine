@@ -459,6 +459,15 @@ ifeq ($(COMPILE_PLATFORM),darwin)
 
   LDFLAGS =
 
+  ifeq ($(ARCH),x86_64)
+    BASE_CFLAGS += -arch x86_64
+    LDFLAGS = -arch x86_64
+  endif
+  ifeq ($(ARCH),arm64)
+    BASE_CFLAGS += -arch arm64
+    LDFLAGS = -arch arm64
+  endif
+
   ifeq ($(USE_OPENAL),1)
     ifneq ($(USE_LOCAL_HEADERS),1)
       BASE_CFLAGS += -I/System/Library/Frameworks/OpenAL.framework/Headers

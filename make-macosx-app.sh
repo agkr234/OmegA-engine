@@ -315,7 +315,7 @@ PLIST="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
     <key>CFBundleIconFile</key>
     <string>quake3_flat</string>
     <key>CFBundleIdentifier</key>
-    <string>org.ioquake.${PRODUCT_NAME}</string>
+    <string>org.omega.${PRODUCT_NAME}</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
@@ -368,7 +368,7 @@ fi
 
 PLIST="${PLIST}
     <key>NSHumanReadableCopyright</key>
-    <string>QUAKE III ARENA Copyright © 1999-2000 id Software, Inc. All rights reserved.</string>
+    <string>OmegA Copyright © 2021-2023 Ekip, Inc. All rights reserved.</string>
     <key>NSPrincipalClass</key>
     <string>NSApplication</string>
     <key>NSHighResolutionCapable</key>
