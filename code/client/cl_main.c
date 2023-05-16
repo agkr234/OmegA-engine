@@ -3844,11 +3844,6 @@ static void CL_InitGLimp_Cvars( void )
 		Cvar_ForceReset( "cl_renderer" );
 	}
 #endif
-
-	//OmegA
-	cl_consoleHeight = Cvar_Get( "cl_consoleHeight", "0.5", CVAR_ARCHIVE );
-	Cvar_CheckRange( cl_consoleHeight, "0", "1", CV_FLOAT );
-	Cvar_SetDescription( cl_consoleHeight, "Console height, set as value from 0.0-1.0, use with \\seta to save in config." );
 }
 
 
@@ -3979,6 +3974,11 @@ void CL_Init( void ) {
 	Cvar_SetDescription( cl_dlDirectory, s );
 
 	cl_reconnectArgs = Cvar_Get( "cl_reconnectArgs", "", CVAR_ARCHIVE_ND | CVAR_NOTABCOMPLETE );
+
+	//OmegA
+	cl_consoleHeight = Cvar_Get( "cl_consoleHeight", "0.5", CVAR_ARCHIVE );
+	Cvar_CheckRange( cl_consoleHeight, "0", "1", CV_FLOAT );
+	Cvar_SetDescription( cl_consoleHeight, "Console height, set as value from 0.0-1.0, use with \\seta to save in config." );
 
 	// userinfo
 	Cvar_Get ("name", "UnnamedPlayer", CVAR_USERINFO | CVAR_ARCHIVE_ND );
