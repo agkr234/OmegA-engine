@@ -199,17 +199,17 @@ static sfxHandle_t S_AL_BufferFind(const char *filename)
 	}
 
 	if ( !filename[0] ) {
-		Com_Printf( S_COLOR_YELLOW "WARNING: Sound name is empty\n" );
+		Com_WPrintf( "WARNING: Sound name is empty\n" );
 		return 0;
 	}
 
 	if ( strlen( filename ) >= MAX_QPATH ) {
-		Com_Printf( S_COLOR_YELLOW "WARNING: Sound name is too long: %s\n", filename );
+		Com_WPrintf( "WARNING: Sound name is too long: %s\n", filename );
 		return 0;
 	}
 
 	if ( filename[0] == '*' ) {
-		Com_Printf( S_COLOR_YELLOW "WARNING: Tried to load player sound directly: %s\n", filename );
+		Com_WPrintf( "WARNING: Tried to load player sound directly: %s\n", filename );
 		return 0;
 	}
 
@@ -859,7 +859,7 @@ static void S_AL_SaveLoopPos(src_t *dest, ALuint alSource)
 
 		if(error != AL_INVALID_ENUM)
 		{
-			Com_Printf(S_COLOR_YELLOW "WARNING: Could not get time offset for alSource %d: %s\n",
+			Com_WPrintf("WARNING: Could not get time offset for alSource %d: %s\n",
 				   alSource, S_AL_ErrorMsg(error));
 		}
 		
@@ -1538,7 +1538,7 @@ void S_AL_SrcUpdate( void )
 							{
 								if(error != AL_INVALID_ENUM)
 								{
-									Com_Printf(S_COLOR_YELLOW "WARNING: Cannot get sample offset from source %d: "
+									Com_WPrintf("WARNING: Cannot get sample offset from source %d: "
 										   "%s\n", i, S_AL_ErrorMsg(error));
 								}
 							}
