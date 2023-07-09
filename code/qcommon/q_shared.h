@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define CONSOLE_WINDOW_TITLE  "OmegA Console"
 // 1.32 released 7-10-2002
 
-#define DEFAULT_GAME			"omega"
+#define DEFAULT_GAME			"brca"
 
 #define BASEGAME				"baseoa"
 //#define BASEDEMO				"demoq3"
@@ -1326,6 +1326,7 @@ typedef struct entityState_s {
 	int		torsoAnim;		// mask off ANIM_TOGGLEBIT
 
 	int		generic1;
+	int		extraFlags;
 } entityState_t;
 
 typedef enum {
