@@ -50,8 +50,8 @@ endif
 # valid options: opengl, vulkan
 RENDERER_DEFAULT = opengl
 
-CNAME            = omega
-DNAME            = omg_ded
+CNAME            = omg-brca
+DNAME            = omg_brca_ded
 
 RENDERER_PREFIX  = renderer
 
