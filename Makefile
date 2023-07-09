@@ -380,7 +380,7 @@ ifdef MINGW
   BASE_CFLAGS += -Wall -Wimplicit -Wstrict-prototypes -DUSE_ICON -DMINGW=1
 
   BASE_CFLAGS += -Wno-unused-result -fvisibility=hidden
-  BASE_CFLAGS += -ffunction-sections -flto
+  BASE_CFLAGS += -ffunction-sections
 
   ifeq ($(USE_OPENAL),1)
     BASE_CFLAGS += $(OPENAL_INCLUDE)
@@ -437,7 +437,7 @@ ifdef MINGW
   endif
 
   DEBUG_CFLAGS = $(BASE_CFLAGS) -DDEBUG -D_DEBUG -g -O0
-  RELEASE_CFLAGS = $(BASE_CFLAGS) -DNDEBUG $(OPTIMIZE)
+  RELEASE_CFLAGS = $(BASE_CFLAGS) -DNDEBUG $(OPTIMIZE) -flto
 
 else # !MINGW
 
