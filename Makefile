@@ -50,8 +50,8 @@ endif
 # valid options: opengl, vulkan
 RENDERER_DEFAULT = opengl
 
-CNAME            = omg-brca
-DNAME            = omg_brca_ded
+CNAME            = omg-caex
+DNAME            = omg_caex_ded
 
 RENDERER_PREFIX  = renderer
 
